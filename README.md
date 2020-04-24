@@ -5,7 +5,7 @@ Version 2.0.1
 
 [Coradine Aviation Systems](https://coradine.com) proudly presents the LogTen Pro Application Programming Interface (API) v2.0 which allows third-party applications to interact with LogTen Pro via a straight forward URL based approach using [JSON](https://json.org) (JavaScript Object Notation).
 
-The LogTen Pro API v2.0 is available starting with LogTen Pro X 7.3. The 2.0.1  API is available starting with LogTen Pro 7.5.8, and is backward compatible with 2.0.
+The LogTen Pro API v2.0 is available starting with LogTen Pro X 7.3. The 2.0.1 API is available starting with LogTen Pro 7.5.8, and is backward compatible with API v2.0.
 
 LogTen Pro is registered to handle requests to the `logtenprox://` URI scheme. Any requests made to the `logtenprox://` scheme will be passed off to LogTen Pro for handling. The general format of the request is as follows: 
 
@@ -31,7 +31,7 @@ thus:
 
 The `package` query parameter value must represent a valid JSON string. Please ensure values in the JSON are properly escaped and the JSON object passes linting checks (see [https://jsonlint.com](https://jsonlint.com)).
 
-Additionally, because the value of the package query parameter contains JSON, it must be URL encoded such that the whole URL is valid. URL encoding, or “[percent encoding](https://en.wikipedia.org/wiki/Percent-encoding)” is a common practice and there are many resources available online to elaborate on the concept and techniques involved.
+Additionally, because the value of the package query parameter contains JSON, it must be URL encoded such that the whole URL is valid. URL encoding, or "[percent encoding](https://en.wikipedia.org/wiki/Percent-encoding)” is a common practice and there are many resources available online to elaborate on the concept and techniques involved.
 
 Coradine supplies sample code in various formats to illustrate how the URL can be properly constructed and encoded. Please visit [https://github.com/Coradine/LogTenProAPI](https://github.com/Coradine/LogTenProAPI) for our latest documentation and sample code.
 
@@ -85,13 +85,19 @@ logtenprox://v2/method?package={"metadata":{"application":"My Application", "ver
 
 ## Identifying Entities
 
-LogTen Pro utilizes the `flight_key` attribute on the `Flight` entity to uniquely identify flights provided from an external source. The `flight_key` attribute is a string value and is required to be unique for a given logbook. When a flight record is sent through the API that includes a `flight_key`, LogTen Pro will first attempt to locate a matching flight with that `flight_key`. If a create or modify operation is being run and a matching `Flight` already exists with that `flight_key`, that `Flight` will be modified with the provided data. If a matching `Flight` is not found, a new one will be created with the provided data. For removal operations, only flights with the matching `flight_key` will be removed. Please note: If the matching `Flight` is locked (`flight_isLocked` is set to `1`), the `Flight` will not be modified or deleted. 
+**IMPORTANT:** each entity *MUST* contain the `entity_name` attribute and specify the entity name.
+
+| Entity Names          |
+|:----------------------|
+| `Flight`              |
+
+LogTen Pro utilizes the `flight_key` attribute on the `Flight` entity to uniquely identify flights provided from an external source. The `flight_key` attribute is a String value and is required to be unique for a given logbook. When a flight record is sent through the API that includes a `flight_key`, LogTen Pro will first attempt to locate a matching flight with that `flight_key`. If an `addEntities` or `modifyEntities` operation is being run and a matching `Flight` already exists with that `flight_key`, that `Flight` will be modified with the provided data. If a matching `Flight` is not found, a new entity will be created with the provided data. For removal operations, only flights with the matching `flight_key` will be removed. Please note: If the matching `Flight` is locked (`flight_isLocked` is set to `1`), the `Flight` will not be modified or deleted. 
 
 ## Supported Methods 
 
 ### addEntities
 
-The `addEntities` method allows a third-party application to create/modify flights  within the LogTen Pro logbook. When the `addEntities` method is invoked, LogTen Pro will ask the user if they wish to create/modify the entities from the requesting application. 
+The `addEntities` method allows a third-party application to create/modify entities within the LogTen Pro logbook. When the `addEntities` method is invoked, LogTen Pro will ask the user if they wish to create/modify the entities from the requesting application. 
 
 The `addEntities` method expects the `metadata` dictionary (see the `metadata` section above) and a collection of entities.
 
@@ -103,35 +109,35 @@ logtenprox://v2/addEntities?package={"metadata":{"application":"My App", "versio
 
 The `addEntities` method allows the following optional parameters in the `metadata` dictionary:
 
-* `dateFormat` - The `dateFormat` parameter specifies how date values should be parsed when they are passed in as string values. The date format string uses the format patterns recognized by the Cocoa `NSDateFormatter` class (e.g. "MM/dd/yyyy").
-* `dateAndTimeFormat` - The `dateAndTimeFormat` parameter specifies how date values should be parsed when they are passed in as string values. The date and time format string uses the format patterns recognized by the Cocoa `NSDateFormatter` class (i.e. "MM/dd/yyyy HH:mm").
-* `timesAreZulu` - The `timesAreZulu` parameter specifies whether any passed in string time values are in Zulu time or should be converted to local time based on the time zone of the departure or arrival airports. Valid values for the `timesAreZulu` parameter are `true` or `false`. If this parameter is not supplied, the default value is `true`. 
+* `dateFormat` - The `dateFormat` parameter specifies how date values should be parsed when they are passed in as String values. The date format string uses the format patterns recognized by the Cocoa `NSDateFormatter` class (e.g. "MM/dd/yyyy").
+* `dateAndTimeFormat` - The `dateAndTimeFormat` parameter specifies how date values should be parsed when they are passed in as String values. The date and time format string uses the format patterns recognized by the Cocoa `NSDateFormatter` class (i.e. "MM/dd/yyyy HH:mm").
+* `timesAreZulu` - The `timesAreZulu` parameter specifies whether any passed in String time values are in Zulu time or should be converted to local time based on the time zone of the departure or arrival airports. Valid values for the `timesAreZulu` parameter are `true` or `false`. If this parameter is not supplied, the default value is `true`. 
 * `shouldApplyAutoFillTimes` - The `shouldApplyAutoFillTimes` parameter specifies whether LogTen Pro should apply the users configured auto fill times (any time field within LogTen Pro set to Auto fill) to any flight entities that are created. This would include the auto calculation of night times. Valid values for the `shouldApplyAutoFillTimes` parameter are `true` or `false`. If this parameter is not supplied, the default value is `false`.
 * `addCrewUsingID` - The `addCrewUsingID` parameter specifies whether LogTen Pro should add any new crew members found in the import by setting their ID field to the value from the import. Valid values for the `addCrewUsingID` parameter are `true` or `false`. If this parameter is not supplied, the default value is `false` (LogTen Pro will assume the value is the crew member’s name).
 
 #### entities
 
-The `entities` collection shall contain the attributes for each entity to be created/modified. LogTen Pro will first attempt to locate a `Flight` in the logbook matching the given `flight_key` (if any). If a matching `Flight` is found, that `Flight` will be updated with the provided attributes. If a matching `Flight` is not found, a new `Flight` will be created. Any of the valid LogTen Pro attributes are available for use (see the Appendix for the current, complete list of relevant attributes).
+The `entities` collection shall contain the attributes for each entity to be created/modified.
 
-**IMPORTANT:** each entity *MUST* contain the `entity_name` attribute and specify the entity name. Currently `Flight` is the only supported entity in the API.
+LogTen Pro will first attempt to locate a `Flight` in the logbook matching the given `flight_key` (if any). If a matching `Flight` is found, that `Flight` will be updated with the provided attributes. If a matching `Flight` is not found, a new `Flight` will be created. Any of the valid LogTen Pro attributes are available for use (see the Appendix for the current, complete list of relevant attributes).
 
 When creating `Flight` entities, the `addEntities` method will allow flight time values to be supplied as either the decimal number of hours (i.e. 1.5), the number of hours and minutes separated by a colon (i.e. "1:30") or the number of hours and minutes separated by a plus sign (i.e. "1+30").
 
-The `addEntities` method will allow date values to be supplied as either a string value that matches the `dateFormat` parameter supplied in the `metadata` or as the number of seconds from the unix epoch (this value can be returned using the `NSDate` `timeIntervalSince1970` method in Cocoa). 
+The `addEntities` method will allow date values to be supplied as either a String value that matches the `dateFormat` parameter supplied in the `metadata` or as the number of seconds from the unix epoch (this value can be returned using the `NSDate` `timeIntervalSince1970` method in Cocoa). 
 
-The `addEntities` method will allow date/time values to be to be supplied as either a string value that matches the `dateAndTimeFormat` parameter supplied in the `metadata` or as the number of seconds from the unix epoch (this value can be returned using the `NSDate` `timeIntervalSince1970` method in Cocoa).
+The `addEntities` method will allow date/time values to be to be supplied as either a String value that matches the `dateAndTimeFormat` parameter supplied in the `metadata` or as the number of seconds from the unix epoch (this value can be returned using the `NSDate` `timeIntervalSince1970` method in Cocoa).
 
-The `timesAreZulu` parameter is only applicable to date/time values that are passed in as strings. When handling local times, the `addEntities` method will first attempt to obtain the time zone for the applicable to or from place (depending on the attribute being set). If there is no corresponding place or it does not have a time zone associated with it, the `addEntities` method will attempt to use the default timezone set for LogTen Pro. If there is no default timezone configured, the `addEntities` method will use GMT (Zulu).
+The `timesAreZulu` parameter is only applicable to date/time values that are passed in as Strings. When handling local times, the `addEntities` method will first attempt to obtain the time zone for the applicable to or from place (depending on the attribute being set). If there is no corresponding place or it does not have a time zone associated with it, the `addEntities` method will attempt to use the default timezone set for LogTen Pro. If there is no default timezone configured, the `addEntities` method will use GMT (Zulu).
 
 #### Advanced Options
 
-Attributes that contain the `_selected` keyword denote convenience methods for accessing/creating related objects. When you set `flight_selectedAircraftType` to "SR22", LogTen Pro will first try to find an aircraft type with that Type designator, if one is found it is automatically set at the flight entities `flight_aircraftType`, if not, a new Type is created and set. In general this is the simplest way to set data, and is all you need.
+Attributes that contain the `_selected` keyword denote convenience methods for accessing/creating related objects. When you set `flight_selectedAircraftType` to "SR22", LogTen Pro will first try to find an aircraft type with that Type designator, if one is found it is automatically set at the `Flight` entities `flight_aircraftType`, if not, a new Type is created and set. In general this is the simplest way to set data, and is all you need.
 
 ### modifyEntities
 
 The `modifyEntities` method allows a third-party application to create, modify and remove flights created by the same application within the LogTen Pro logbook. When the `modifyEntities` method is invoked, LogTen Pro will ask the user if they wish to create/modify and remove the flights from the requesting application. 
 
-The `modifyEntities` method expects the `metadata` dictionary (see the `metadata` section above), a collection of flights to create/modify and collection of flights to remove. The `modifyEntities` method requires at least both collections to be present, however it is valid to send empty collections.
+The `modifyEntities` method expects the `metadata` dictionary (see the `metadata` section above), a collection of flights to create/modify (`entities`) and collection of flights to remove (`removeEntities`). The `modifyEntities` method requires both collections to be present, however it is valid to send empty collections.
 
 ```
 logtenprox://v2/modifyEntities?package={"metadata":{"application":"My App", "version":"1.0", ...}, "entities":[{flight1 info...}, {flight2 info...}, ...], "removeEntities":[{flight1 flight_key}, {flight2 flight_key}, ...]}
@@ -141,25 +147,25 @@ logtenprox://v2/modifyEntities?package={"metadata":{"application":"My App", "ver
 
 The `modifyEntities` method allows these optional parameters in the `metadata` dictionary:
 
-* `dateFormat` - The `dateFormat` parameter specifies how date values should be parsed when they are passed in as string values. The date format string uses the format patterns recognized by the Cocoa `NSDateFormatter` class (e.g. "MM/dd/yyyy"). 
-* `dateAndTimeFormat` - The `dateAndTimeFormat` parameter specifies how date values should be parsed when they are passed in as string values. The date and time format string uses the format patterns recognized by the Cocoa `NSDateFormatter` class (i.e. "MM/dd/yyyy HH:mm").
-* `timesAreZulu` - The `timesAreZulu` parameter specifies whether any passed in string time values are in Zulu time or should be converted to local time based on the time zone of the departure or arrival airports. Valid values for the `timesAreZulu` parameter are `true` or `false`. If this parameter is not supplied, the default value is `true`.
+* `dateFormat` - The `dateFormat` parameter specifies how date values should be parsed when they are passed in as String values. The date format string uses the format patterns recognized by the Cocoa `NSDateFormatter` class (e.g. "MM/dd/yyyy"). 
+* `dateAndTimeFormat` - The `dateAndTimeFormat` parameter specifies how date values should be parsed when they are passed in as String values. The date and time format string uses the format patterns recognized by the Cocoa `NSDateFormatter` class (i.e. "MM/dd/yyyy HH:mm").
+* `timesAreZulu` - The `timesAreZulu` parameter specifies whether any passed in String time values are in Zulu time or should be converted to local time based on the time zone of the departure or arrival airports. Valid values for the `timesAreZulu` parameter are `true` or `false`. If this parameter is not supplied, the default value is `true`.
 * `shouldApplyAutoFillTimes` - The `shouldApplyAutoFillTimes` parameter specifies whether LogTen Pro should apply the users configured auto fill times to any flight entities that are created. This would include the auto calculation of night times. Valid values for the `shouldApplyAutoFillTimes` parameter are `true` or `false`. If this parameter is not supplied, the default value is `false`.
 * `addCrewUsingID` - The `addCrewUsingID` parameter specifies whether LogTen Pro should add any new crew members found in the import by setting their ID field to the value from the import. Valid values for the `addCrewUsingID` parameter are `true` or `false`. If this parameter is not supplied, the default value is `false` (LogTen Pro will assume the value is the crew member’s name).
 
 #### entities
 
-The `entities` collection shall contain the attributes for each entity to be created/modified. LogTen Pro will first attempt to locate a `Flight` in the logbook matching the given `flight_key` (if any). If a matching `Flight` is found, that `Flight` will be updated with the provided attributes. If a matching `Flight` is not found, a new `Flight` will be created. Any of the valid LogTen Pro attributes are available for use (see the Appendix for the current, complete list of relevant attributes).
+The `entities` collection shall contain the attributes for each entity to be created/modified. Only `Flight` entities, and only those with an associated `flight_key`, can be modified.
 
-**IMPORTANT:** each entity *MUST* contain the `entity_name` attribute and specify the entity name. Currently `Flight` is the only supported entity in the API.
+LogTen Pro will first attempt to locate a `Flight` in the logbook matching the given `flight_key` (if any). If a matching `Flight` is found, that `Flight` will be updated with the provided attributes. If a matching `Flight` is not found, a new `Flight` will be created. Any of the valid LogTen Pro attributes are available for use (see the Appendix for the current, complete list of relevant attributes).
 
 When creating `Flight` entities, the `modifyEntities` method will allow flight time values to be supplied as either the decimal number of hours (i.e. 1.5), the number of hours and minutes separated by a colon (i.e. "1:30") or the number of hours and minutes separated by a plus sign (i.e. "1+30").
 
-The `modifyEntities` method will allow date values to be supplied as either a string value that matches the `dateFormat` parameter supplied in the `metadata` or as the number of seconds from the unix epoch (this value can be returned using the `NSDate` `timeIntervalSince1970` method in Cocoa). 
+The `modifyEntities` method will allow date values to be supplied as either a String value that matches the `dateFormat` parameter supplied in the `metadata` or as the number of seconds from the unix epoch (this value can be returned using the `NSDate` `timeIntervalSince1970` method in Cocoa). 
 
-The `modifyEntities` method will allow date/time values to be to be supplied as either a string value that matches the `dateAndTimeFormat` parameter supplied in the `metadata` or as the number of seconds from the unix epoch (this value can be returned using the `NSDate` `timeIntervalSince1970` method in Cocoa).
+The `modifyEntities` method will allow date/time values to be to be supplied as either a String value that matches the `dateAndTimeFormat` parameter supplied in the `metadata` or as the number of seconds from the unix epoch (this value can be returned using the `NSDate` `timeIntervalSince1970` method in Cocoa).
 
-The `timesAreZulu` parameter is only applicable to date/time values that are passed in as strings. When handling local times, the `modifyEntities` method will first attempt to obtain the time zone for the applicable to or from place (depending on the attribute being set). If there is no corresponding place or it does not have a time zone associated with it, the `modifyEntities` method will attempt to use the default timezone set for LogTen Pro. If there is no default timezone configured, the `modifyEntities` method will use GMT (Zulu).
+The `timesAreZulu` parameter is only applicable to date/time values that are passed in as Strings. When handling local times, the `modifyEntities` method will first attempt to obtain the time zone for the applicable to or from place (depending on the attribute being set). If there is no corresponding place or it does not have a time zone associated with it, the `modifyEntities` method will attempt to use the default timezone set for LogTen Pro. If there is no default timezone configured, the `modifyEntities` method will use GMT (Zulu).
 
 #### removeEntities
 
@@ -168,7 +174,36 @@ The `timesAreZulu` parameter is only applicable to date/time values that are pas
 The following is an example of a `modifyEntities` request (prior to encoding): 
 
 ```
-logtenprox://v2/modifyEntities?package={“metadata":{"application":"My Application","version":"1.0","dateFormat":"MM/dd/yyyy","dateAndTimeFormat":"MM/dd/yyyy HH:mm","timesAreZulu":true},"entities":[{"entity_name":"Flight","flight_key":"myAppFlight_101","flight_flightDate":"12/25/2010","flight_to":"KPIT","flight_from":"KPJC","flight_pic":"1:30","flight_takeoffTime":"12/25/2010 15:50"}],"removeEntities":[{"entity_name":"Flight","flight_key":"myAppFlight_102"},{"entity_name":"Flight","flight_key":"myAppFlight_103"}]}
+logtenprox://v2/modifyEntities?package={"metadata":{"application":"My Application","version":"1.0","dateFormat":"MM/dd/yyyy","dateAndTimeFormat":"MM/dd/yyyy HH:mm","timesAreZulu":true},"entities":[{"entity_name":"Flight","flight_key":"myAppFlight_101","flight_flightDate":"12/25/2010","flight_to":"KPIT","flight_from":"KPJC","flight_pic":"1:30","flight_takeoffTime":"12/25/2010 15:50"}],"removeEntities":[{"entity_name":"Flight","flight_key":"myAppFlight_102"},{"entity_name":"Flight","flight_key":"myAppFlight_103"}]}
+```
+
+specifically:
+
+```
+{
+  "entities": [
+    {
+      "flight_pic": "1:30", 
+      "flight_takeoffTime": "12/25/2010 15:50", 
+      "entity_name": "Flight", 
+      "flight_flightDate": "12/25/2010", 
+      "flight_from": "KPJC", 
+      "flight_to": "KPIT", 
+      "flight_key": "myAppFlight_101"
+    }
+  ], 
+  "removeEntities": [
+    {
+      "flight_key": "myAppFlight_102", 
+      "entity_name": "Flight"
+    }, 
+    {
+      "flight_key": "myAppFlight_103", 
+      "entity_name": "Flight"
+    }
+  ], 
+  "metadata": {...}
+}
 ```
 
 ## Appendix
@@ -443,7 +478,7 @@ logtenprox://v2/modifyEntities?package={“metadata":{"application":"My Applicat
 | Date       | Notes                                                                     |
 |:-----------|:--------------------------------------------------------------------------|
 | 2020-04-17 | Added details about proper JSON formatting and parameter encoding. Added reference links. |
-| 2020-04-23 | Published as MarkDown on GitHub                                           |
+| 2020-04-23 | Converted to Markdown                                                     |
 
 ---
 ![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png "Creative Commons License")  
