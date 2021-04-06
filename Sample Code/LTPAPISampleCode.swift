@@ -99,7 +99,7 @@ private extension LTPAPISampleCode {
     }
 
     func configureApiURLStringWith(encodedMethod: String) -> String {
-        let urlScheme = "logtenprox"
+        let urlScheme = "logtenpro"
         let logTenProAPIVersion = 2
 
         return "\(urlScheme)://v\(logTenProAPIVersion)/\(encodedMethod)"
