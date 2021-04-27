@@ -7,11 +7,11 @@ Version 2.0.2
 
 The LogTen Pro API v2.0 is available starting with LogTen Pro X 7.3. The 2.0.1 API is available starting with LogTen Pro 7.5.8, and is backward compatible with API v2.0.
 
-LogTen Pro is registered to handle requests to the `logtenpro://` URI scheme. Any requests made to the `logtenpro://` scheme will be passed off to LogTen Pro for handling. The general format of the request is as follows: 
+LogTen Pro is registered to handle requests to the `logten://` URI scheme. Any requests made to the `logten://` scheme will be passed off to LogTen Pro for handling. The general format of the request is as follows: 
 
-`logtenpro://v2/method?package={JSON}`
+`logten://v2/method?package={JSON}`
 
-NOTE: `logtenpro` is the preferred scheme as of API version 2.0.2, however the legacy scheme of `logtenprox` remains compatible.
+NOTE: `logten` is the preferred scheme as of API version 2.0.2, however the legacy scheme of `logtenprox` remains compatible.
 
 ## Package
 
@@ -40,13 +40,13 @@ Coradine supplies sample code in various formats to illustrate how the URL can b
 The following is an example of a valid `addEntities` request:
 
 ```
-logtenpro://v2/addEntities?package=%7B%22entities%22%3A%5B%7B%22flight_flightDate%22%3A%2212%2F25%2F2010%22%2C%22flight_takeoffTime%22%3A%2212%2F25%2F2010%2015%3A50%22%2C%22flight_selectedAircraftType%22%3A%22SR22%22%2C%22flight_to%22%3A%22KSFO%22%2C%22flight_totalTime%22%3A%222%3A30%22%2C%22entity_name%22%3A%22Flight%22%2C%22flight_from%22%3A%22KPDX%22%2C%22flight_remarks%22%3A%22%5C%22Never%20interrupt%20someone%20doing%20what%20you%20said%20couldn%27t%20be%20done.%5C%22%20%5C%5C%20Amelia%20Earhart%22%7D%5D%2C%22metadata%22%3A%7B%22dateAndTimeFormat%22%3A%22MM%2Fdd%2Fyyyy%20HH%3Amm%22%2C%22timesAreZulu%22%3Atrue%2C%22application%22%3A%22MyApplication%22%2C%22dateFormat%22%3A%22MM%2Fdd%2Fyyyy%22%2C%22version%22%3A%221.0%22%7D%7D
+logten://v2/addEntities?package=%7B%22entities%22%3A%5B%7B%22flight_flightDate%22%3A%2212%2F25%2F2010%22%2C%22flight_takeoffTime%22%3A%2212%2F25%2F2010%2015%3A50%22%2C%22flight_selectedAircraftType%22%3A%22SR22%22%2C%22flight_to%22%3A%22KSFO%22%2C%22flight_totalTime%22%3A%222%3A30%22%2C%22entity_name%22%3A%22Flight%22%2C%22flight_from%22%3A%22KPDX%22%2C%22flight_remarks%22%3A%22%5C%22Never%20interrupt%20someone%20doing%20what%20you%20said%20couldn%27t%20be%20done.%5C%22%20%5C%5C%20Amelia%20Earhart%22%7D%5D%2C%22metadata%22%3A%7B%22dateAndTimeFormat%22%3A%22MM%2Fdd%2Fyyyy%20HH%3Amm%22%2C%22timesAreZulu%22%3Atrue%2C%22application%22%3A%22MyApplication%22%2C%22dateFormat%22%3A%22MM%2Fdd%2Fyyyy%22%2C%22version%22%3A%221.0%22%7D%7D
 ```
 
 Here's the same URL, without URL encoding:
 
 ```
-logtenpro://v2/addEntities?package={"entities":[{"flight_flightDate":"12/25/2010","flight_takeoffTime":"12/25/2010 15:50","flight_selectedAircraftType":"SR22","flight_to":"KSFO","flight_totalTime":"2:30","entity_name":"Flight","flight_from":"KPDX","flight_remarks":"\"Never interrupt someone doing what you said couldn't be done.\" \\ Amelia Earhart"}],"metadata":{"dateAndTimeFormat":"MM/dd/yyyy HH:mm","timesAreZulu":true,"application":"MyApplication","dateFormat":"MM/dd/yyyy","version":"1.0"}}
+logten://v2/addEntities?package={"entities":[{"flight_flightDate":"12/25/2010","flight_takeoffTime":"12/25/2010 15:50","flight_selectedAircraftType":"SR22","flight_to":"KSFO","flight_totalTime":"2:30","entity_name":"Flight","flight_from":"KPDX","flight_remarks":"\"Never interrupt someone doing what you said couldn't be done.\" \\ Amelia Earhart"}],"metadata":{"dateAndTimeFormat":"MM/dd/yyyy HH:mm","timesAreZulu":true,"application":"MyApplication","dateFormat":"MM/dd/yyyy","version":"1.0"}}
 ```
 
 And here, the package query parameter value is expanded:
@@ -82,7 +82,7 @@ The `package` object shall always contain a `metadata` dictionary. The `metadata
 Ex:
 
 ```
-logtenpro://v2/method?package={"metadata":{"application":"My Application", "version":"1.0", "serviceID": "com.acme.dehydrated_boulders", "serviceAccountKey": "63392ce4-d3f7-4fcf-a1fd-ee5640205568", "optionalParameter":"some_value"}, …}
+logten://v2/method?package={"metadata":{"application":"My Application", "version":"1.0", "serviceID": "com.acme.dehydrated_boulders", "serviceAccountKey": "63392ce4-d3f7-4fcf-a1fd-ee5640205568", "optionalParameter":"some_value"}, …}
 ```
 
 ## Identifying Entities
@@ -104,7 +104,7 @@ The `addEntities` method allows a third-party application to create/modify entit
 The `addEntities` method expects the `metadata` dictionary (see the `metadata` section above) and a collection of entities.
 
 ```
-logtenpro://v2/addEntities?package={"metadata":{"application":"My App", "version":"1.0", ...}, "entities":[{entity1 info...}, {entity2 info...}, …]}
+logten://v2/addEntities?package={"metadata":{"application":"My App", "version":"1.0", ...}, "entities":[{entity1 info...}, {entity2 info...}, …]}
 ```
 
 #### metadata:
@@ -142,7 +142,7 @@ The `modifyEntities` method allows a third-party application to create, modify a
 The `modifyEntities` method expects the `metadata` dictionary (see the `metadata` section above), a collection of flights to create/modify (`entities`) and collection of flights to remove (`removeEntities`). The `modifyEntities` method requires both collections to be present, however it is valid to send empty collections.
 
 ```
-logtenpro://v2/modifyEntities?package={"metadata":{"application":"My App", "version":"1.0", ...}, "entities":[{flight1 info...}, {flight2 info...}, ...], "removeEntities":[{flight1 flight_key}, {flight2 flight_key}, ...]}
+logten://v2/modifyEntities?package={"metadata":{"application":"My App", "version":"1.0", ...}, "entities":[{flight1 info...}, {flight2 info...}, ...], "removeEntities":[{flight1 flight_key}, {flight2 flight_key}, ...]}
 ```
 
 #### metadata
@@ -176,7 +176,7 @@ The `timesAreZulu` parameter is only applicable to date/time values that are pas
 The following is an example of a `modifyEntities` request (prior to encoding): 
 
 ```
-logtenpro://v2/modifyEntities?package={"metadata":{"application":"My Application","version":"1.0","dateFormat":"MM/dd/yyyy","dateAndTimeFormat":"MM/dd/yyyy HH:mm","timesAreZulu":true},"entities":[{"entity_name":"Flight","flight_key":"myAppFlight_101","flight_flightDate":"12/25/2010","flight_to":"KPIT","flight_from":"KPJC","flight_pic":"1:30","flight_takeoffTime":"12/25/2010 15:50"}],"removeEntities":[{"entity_name":"Flight","flight_key":"myAppFlight_102"},{"entity_name":"Flight","flight_key":"myAppFlight_103"}]}
+logten://v2/modifyEntities?package={"metadata":{"application":"My Application","version":"1.0","dateFormat":"MM/dd/yyyy","dateAndTimeFormat":"MM/dd/yyyy HH:mm","timesAreZulu":true},"entities":[{"entity_name":"Flight","flight_key":"myAppFlight_101","flight_flightDate":"12/25/2010","flight_to":"KPIT","flight_from":"KPJC","flight_pic":"1:30","flight_takeoffTime":"12/25/2010 15:50"}],"removeEntities":[{"entity_name":"Flight","flight_key":"myAppFlight_102"},{"entity_name":"Flight","flight_key":"myAppFlight_103"}]}
 ```
 
 specifically:
