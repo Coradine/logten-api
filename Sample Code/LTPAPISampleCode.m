@@ -49,7 +49,7 @@
 		if (jsonPayloadData) {
 			NSString *payload = [[NSString alloc] initWithData:jsonPayloadData encoding:NSUTF8StringEncoding];
 
-			NSString * const urlScheme = @"logtenprox";
+			NSString * const urlScheme = @"logten";
 			NSUInteger const logTenProAPIVersion = 2;
 			NSString * const method = @"addEntities";
 
