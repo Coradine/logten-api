@@ -1,0 +1,55 @@
+{
+	"metadata": {
+		"application": "MyApplication",
+		"version": "1.0",
+		"dateAndTimeFormat": "MM/dd/yyyy HH:mm",
+		"timesAreZulu": true,
+		"dateFormat": "MM/dd/yyyy"
+	},
+	"entities": [
+		{
+			"entity_name": "Flight",
+			"flight_selectedCrewPIC": "Amelia Earhart",
+			"flight_takeoffTime": "2021-12-10T15:50:00Z",
+			"flight_flightDate": "2021-12-10T15:50:00Z",
+			"flight_from": "KPDX",
+			"flight_to": "KSFO",
+			"flight_selectedAircraftClass": "Single-Engine Land",
+			"flight_selectedCategory": "Airplane",
+			"flight_dualReceivedDay": 150,
+			"flight_dayTime": 150,
+			"flight_category1": 150,
+			"flight_totalBlockTime": 150,
+			"flight_selectedMake": "CIRRUS (USA)",
+			"flight_aircraftClass2": 150,
+			"flight_remarks": "\"Never interrupt someone doing what you said couldn't be done.\" \\ Amelia Earhart",
+			"flight_distance": 478.2967529296875,
+			"flight_totalTime": 150,
+			"flight_toCountry": "United States",
+			"flight_dualReceived": 150,
+			"flight_key": "my-spiffy-flightkey-90210"
+		},
+		{
+			"entity_name": "Flight",
+			"flight_selectedCrewPIC": "Amelia Earhart",
+			"flight_takeoffTime": "2021-12-11T06:32:00Z",
+			"flight_flightDate": "2021-12-11T06:32:00Z",
+			"flight_from": "KSFO",
+			"flight_to": "KPDX",
+			"flight_selectedAircraftClass": "Single-Engine Land",
+			"flight_selectedCategory": "Airplane",
+			"flight_dualReceivedDay": 150,
+			"flight_dayTime": 150,
+			"flight_category1": 150,
+			"flight_totalBlockTime": 150,
+			"flight_selectedMake": "CIRRUS (USA)",
+			"flight_aircraftClass2": 150,
+			"flight_remarks": "\"The most effective way to do it is to do it.\" \\ Amelia Earhart",
+			"flight_distance": 478.2967529296875,
+			"flight_totalTime": 150,
+			"flight_toCountry": "United States",
+			"flight_dualReceived": 150,
+			"flight_key": "my-spiffy-flightkey-0U812"
+		}
+	]
+}
