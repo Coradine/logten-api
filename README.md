@@ -92,6 +92,8 @@ logten://v2/method?package={"metadata":{"application":"My Application", "version
 | Entity Names          |
 |:----------------------|
 | `Flight`              |
+| `Aircraft`              |
+
 
 LogTen Pro utilizes the `flight_key` attribute on the `Flight` entity to uniquely identify flights provided from an external source. The `flight_key` attribute is a String value and is required to be unique for a given logbook. When a flight record is sent through the API that includes a `flight_key`, LogTen Pro will first attempt to locate a matching flight with that `flight_key`. If an `addEntities` or `modifyEntities` operation is being run and a matching `Flight` already exists with that `flight_key`, that `Flight` will be modified with the provided data. If a matching `Flight` is not found, a new entity will be created with the provided data. For removal operations, only flights with the matching `flight_key` will be removed. Please note: If the matching `Flight` is locked (`flight_isLocked` is set to `1`), the `Flight` will not be modified or deleted. 
 
@@ -171,7 +173,7 @@ The `timesAreZulu` parameter is only applicable to date/time values that are pas
 
 #### removeEntities
 
- The `removeEntities` collection shall contain the `flight_key` for each `Flight` to be removed.
+The `removeEntities` collection shall contain the `flight_key` for each `Flight` to be removed.
 
 The following is an example of a `modifyEntities` request (prior to encoding): 
 
@@ -320,11 +322,11 @@ specifically:
 | flight_customTime20                 | Integer 32 |                             |
 | flight_dayLandings                  | Integer 32 |                             |
 | flight_dayTakeoffs                  | Integer 32 |                             |
-| flight_distance                     | Float      |                             |
+| flight_distance                     | Float      |       Normally auto calculated by LT                      |
 | flight_dualGiven                    | Integer 32 |                             |
 | flight_dualReceived                 | Integer 32 |                             |
 | flight_dualReceivedNight            | Integer 32 |                             |
-| flight_duration                     | Integer 32 |                             |
+| flight_duration                     | Integer 32 |  "Air Time" normally calcuated automatically from Off to On                      |
 | flight_dutyTimePayRate              | Float      |                             |
 | flight_expenses                     | Float      |                             |
 | flight_faaPart61                    | Boolean    |                             |
@@ -332,8 +334,8 @@ specifically:
 | flight_faaPart121                   | Boolean    |                             |
 | flight_faaPart135                   | Boolean    |                             |
 | flight_far1                         | Boolean    |                             |
-| flight_fcls                         | Integer 32 |                             |
-| flight_flagged                      | Boolean    |                             |
+| flight_fcls                         | Integer 32 |  A Field Carrier Landing                           |
+| flight_flagged                      | Boolean    |  A Flagged flight in LT will show red on the Mac                             |
 | flight_flightDate                   | Date       |                             |
 | flight_flightDutyEndTime            | Date       |                             |
 | flight_flightDutyStartTime          | Date       |                             |
@@ -357,14 +359,14 @@ specifically:
 | flight_hobbsStart                   | Float      |                             |
 | flight_hobbsStop                    | Float      |                             |
 | flight_holds                        | Integer 32 |                             |
-| flight_ifr                          | Integer 32 |                             |
+| flight_ifr                          | Integer 32 | Usually denotes time flown under an IFR flight plan.                            |
 | flight_ifrCapacity                  | Boolean    |                             |
 | flight_instrumentProficiencyCheck   | Boolean    |                             |
 | flight_key                          | String     |                             |
 | flight_landingCapacity              | Boolean    |                             |
 | flight_landingTime                  | Date       |                             |
-| flight_leg                          | Integer 32 |                             |
-| flight_legCount                     | Integer 32 |                             |
+| flight_leg                          | Integer 32 | Used to order flights on the same date.                            |
+| flight_legCount                     | Integer 32 |  Used if a single flight entity contains multiple legs.                           |
 | flight_multiPilot                   | Integer 32 |                             |
 | flight_night                        | Integer 32 |                             |
 | flight_nightLandings                | Integer 32 |                             |
@@ -397,9 +399,9 @@ specifically:
 | flight_scheduledTimePayRate         | Float      |                             |
 | flight_scheduledTotalTime           | Integer 32 |                             |
 | flight_sectionName                  | String     |                             |
-| flight_selectedAircraftClass        | String     |                             |
-| flight_selectedAircraftID           | String     |                             |
-| flight_selectedAircraftType         | String     |                             |
+| flight_selectedAircraftClass        | String     | Normally not needed if a valid ICAO `flight_selectedAircraftType` is sent.                            |
+| flight_selectedAircraftID           | String     | The aircraft ID will form an entry on the "Aircraft" page (unless this aircraft ID already exsists).                             |
+| flight_selectedAircraftType         | String     |  The type of aircraft, the preferred type is the ICAO code of the aircraft. This will refer to the matching type on the "Types" page of LogTen. A valid ICAO code will autopopulate all type details automatically.                           |
 | flight_selectedApproach1            | String     |                             |
 | flight_selectedApproach2            | String     |                             |
 | flight_selectedApproach3            | String     |                             |
@@ -438,9 +440,9 @@ specifically:
 | flight_selectedCrewRelief4          | String     |                             |
 | flight_selectedCrewSIC              | String     |                             |
 | flight_selectedCrewStudent          | String     |                             |
-| flight_selectedEngineType           | String     |                             |
-| flight_selectedMake                 | String     |                             |
-| flight_selectedModel                | String     |                             |
+| flight_selectedEngineType           | String     |   Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type.                          |
+| flight_selectedMake                 | String     | Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type.                            |
+| flight_selectedModel                | String     |  Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type.                           |
 | flight_sfi                          | Integer 32 | Simulator Flight Instructor |
 | flight_shipboardLandings            | Integer 32 |                             |
 | flight_shipboardTakeoffs            | Integer 32 |                             |
@@ -459,12 +461,12 @@ specifically:
 | flight_to                           | String     |                             |
 | flight_totalDutyTime                | Integer 32 |                             |
 | flight_totalEarned                  | Float      |                             |
-| flight_totalLandings                | Integer 32 |                             |
+| flight_totalLandings                | Integer 32 |  Normally not sent as this is not an user accesible field in LogTen and automatically calculated. The preferred fields are `flight_nightLandings` and `flight_dayLandings`.                            |
 | flight_totalPushTime                | Integer 32 |                             |
 | flight_totalTakeoffs                | Integer 32 |                             |
 | flight_totalTime                    | Integer 32 |                             |
 | flight_touchAndGoes                 | Integer 32 |                             |
-| flight_type                         | Integer 32 |                             |
+| flight_type                         | Integer 32 |   See below.                          |
 | flight_underSupervisionCapacity     | Boolean    |                             |
 | flight_useCode                      | String     |                             |
 | flight_visibility                   | Float      |                             |
@@ -475,12 +477,84 @@ specifically:
 | flight_windVelocity                 | Integer 16 |                             |
 
 
+**flight_type** is used to determine the type of the flight entity:
+
+    "Flight"			= 0,
+    "Positioning"		= 1,
+    "Non Flying"		= 2,
+    "Simulator"			= 3,
+    "Airport Reserve"	= 4,
+    "Airport Standby"	= 5,
+    "Home Reserve"		= 6,
+    "Home Standby"		= 7
+
+*For any time field: if no night times are sent then it is assumed that the times are all "day". If `flight_night` is sent with the entity the individual night times for other fields (PIC, XC, Dual, etc.) should auto fill so in most cases there isn't a need to send individual night times. Although in cases where the Day + Night time of a time field doesn't equal the total time of the flight then individual night and day times should be sent.*
+
+### Aircraft Attributes
+
+If specific aircraft attributes must be set then a seperate payload must be sent setting the attributes of the Aircraft. As an example, if an aircraft must be set as complex then the following payload can be sent:
+```
+[{"entity_name":"Aircraft","aircraft_aircraftID":"N233MJ","aircraft_complex":true}]
+```
+
+Available attributes include:
+
+| Key                                 | Data Type  | Notes                       |
+|:------------------------------------|:-----------|:----------------------------|
+| aircraft_aerobatic           | Boolean       |                             |
+| aircraft_aircraftID           | String       |                             |
+| aircraft_autoEngine           | String       |                             |
+| aircraft_complex           | String       |                             |
+| aircraft_customAttribute1           | Boolean       |                             |
+| aircraft_customAttribute2           | Boolean       |                             |
+| aircraft_customAttribute3           | Boolean       |                             |
+| aircraft_customAttribute4           | Boolean       |                             |
+| aircraft_customAttribute5           | Boolean       |                             |
+| aircraft_customText1           | String       |                             |
+| aircraft_customText2           | String       |                             |
+| aircraft_customText3           | String       |                             |
+| aircraft_customText4           | String       |                             |
+| aircraft_customText5           | String       |                             |
+| aircraft_customText6           | String       |                             |
+| aircraft_customText7           | String       |                             |
+| aircraft_customText8           | String       |                             |
+| aircraft_efis           | Boolean       |                             |
+| aircraft_enginePower           | Integer       |                             |
+| aircraft_experimental           | Boolean       |                             |
+| aircraft_fuelInjection           | Boolean       |                             |
+| aircraft_highPerformance           | Boolean       |                             |
+| aircraft_hobbs           | Float       |                             |
+| aircraft_instrumentType           | String       |                             |
+| aircraft_military           | Boolean       |                             |
+| aircraft_notes           | String       |                             |
+| aircraft_paxCapacity           | Integer       |                             |
+| aircraft_pressurized           | Boolean       |                             |
+| aircraft_radialEngine           | Boolean       |                             |
+| aircraft_secondaryID           | String       |                             |
+| aircraft_serialNumber           | String       |                             |
+| aircraft_simAuthNumber           | String       |                             |
+| aircraft_simLevel           | String       |                             |
+| aircraft_tachometer           | Float       |                             |
+| aircraft_tailwheel           | Boolean       |                             |
+| aircraft_technicallyAdvanced           | Boolean       |                             |
+| aircraft_turboCharged           | Boolean       |                             |
+| aircraft_undercarriageAmphib           | Boolean       |                             |
+| aircraft_undercarriageFloats           | Boolean       |                             |
+| aircraft_undercarriageRetractable           | Boolean       |                             |
+| aircraft_undercarriageSkids           | Boolean       |                             |
+| aircraft_undercarriageSkis           | Boolean       |                             |
+| aircraft_warbird           | Boolean       |                             |
+| aircraft_weight           | Float       |                             |
+| aircraft_wheelConfiguration           | String       |                             |
+| aircraft_year           | Date       |                             |
+
 ### Document Revision History
 
 | Date       | Notes                                                                     |
 |:-----------|:--------------------------------------------------------------------------|
 | 2020-04-17 | Added details about proper JSON formatting and parameter encoding. Added reference links. |
 | 2020-04-23 | Converted to Markdown                                                     |
+| 2022-09-01 | Added flight field details, including flight type integers and other miscellaneous  notes. Added Aircraft entity type.                                              |
 
 ---
 ![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png "Creative Commons License")  
