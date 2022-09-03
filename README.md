@@ -399,9 +399,9 @@ specifically:
 | flight_scheduledTimePayRate         | Float      |                             |
 | flight_scheduledTotalTime           | Integer 32 |                             |
 | flight_sectionName                  | String     |                             |
-| flight_selectedAircraftClass        | String     | Normally not needed if a valid ICAO `flight_selectedAircraftType` is sent.                            |
-| flight_selectedAircraftID           | String     | The aircraft ID will form an entry on the "Aircraft" page (unless this aircraft ID already exsists).                             |
-| flight_selectedAircraftType         | String     |  The type of aircraft, the preferred type is the ICAO code of the aircraft. This will refer to the matching type on the "Types" page of LogTen. A valid ICAO code will autopopulate all type details automatically.                           |
+| flight_selectedAircraftClass        | String     | Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type.                             |
+| flight_selectedAircraftID           | String     | The aircraft ID will create an entry on the "Aircraft" page unless this aircraft ID already exists.                             |
+| flight_selectedAircraftType         | String     |  The type of the aircraft. The preferred string is the exact ICAO code of this aircraft type. An entry on the "Types" page of LT will be created unless this type already exists.                           |
 | flight_selectedApproach1            | String     |                             |
 | flight_selectedApproach2            | String     |                             |
 | flight_selectedApproach3            | String     |                             |
@@ -440,9 +440,9 @@ specifically:
 | flight_selectedCrewRelief4          | String     |                             |
 | flight_selectedCrewSIC              | String     |                             |
 | flight_selectedCrewStudent          | String     |                             |
-| flight_selectedEngineType           | String     |   Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type.                          |
-| flight_selectedMake                 | String     | Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type.                            |
-| flight_selectedModel                | String     |  Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type.                           |
+| flight_selectedEngineType           | String     |   Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type code.                          |
+| flight_selectedMake                 | String     | Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type code.                            |
+| flight_selectedModel                | String     |  Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type code.                           |
 | flight_sfi                          | Integer 32 | Simulator Flight Instructor |
 | flight_shipboardLandings            | Integer 32 |                             |
 | flight_shipboardTakeoffs            | Integer 32 |                             |
@@ -461,12 +461,12 @@ specifically:
 | flight_to                           | String     |                             |
 | flight_totalDutyTime                | Integer 32 |                             |
 | flight_totalEarned                  | Float      |                             |
-| flight_totalLandings                | Integer 32 |  Normally not sent as this is not an user accesible field in LogTen and automatically calculated. The preferred fields are `flight_nightLandings` and `flight_dayLandings`.                            |
+| flight_totalLandings                | Integer 32 |  Normally not sent as this is not a user accessible field. The preferred fields are `flight_nightLandings` and `flight_dayLandings` which will autopopulate this field.                            |
 | flight_totalPushTime                | Integer 32 |                             |
 | flight_totalTakeoffs                | Integer 32 |                             |
 | flight_totalTime                    | Integer 32 |                             |
 | flight_touchAndGoes                 | Integer 32 |                             |
-| flight_type                         | Integer 32 |   See below.                          |
+| flight_type                         | Integer 32 |   *See below.                          |
 | flight_underSupervisionCapacity     | Boolean    |                             |
 | flight_useCode                      | String     |                             |
 | flight_visibility                   | Float      |                             |
@@ -477,7 +477,7 @@ specifically:
 | flight_windVelocity                 | Integer 16 |                             |
 
 
-**flight_type** is used to determine the type of the flight entity:
+***flight_type** is used to determine the type of the flight entity:
 
     "Flight"			= 0,
     "Positioning"		= 1,
@@ -488,11 +488,11 @@ specifically:
     "Home Reserve"		= 6,
     "Home Standby"		= 7
 
-*For any time field: if no night times are sent then it is assumed that the times are all "day". If `flight_night` is sent with the entity the individual night times for other fields (PIC, XC, Dual, etc.) should auto fill so in most cases there isn't a need to send individual night times. Although in cases where the Day + Night time of a time field doesn't equal the total time of the flight then individual night and day times should be sent.*
+*Note: For any time field, if no night times are sent then it is assumed that the times are all "day". If `flight_night` is sent with the entity then the individual night times for other fields (PIC, XC, Dual, etc.) will auto fill. In most cases there isn't a need to send the individual night times.*
 
 ### Aircraft Attributes
 
-If specific aircraft attributes must be set then a seperate payload must be sent setting the attributes of the Aircraft. As an example, if an aircraft must be set as complex then the following payload can be sent:
+If specific aircraft attributes must be set then a seperate payload can be sent setting the attributes of the Aircraft. As an example, if an aircraft must be set as complex then the following payload can be sent:
 ```
 [{"entity_name":"Aircraft","aircraft_aircraftID":"N233MJ","aircraft_complex":true}]
 ```
