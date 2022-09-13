@@ -214,267 +214,268 @@ specifically:
 
 ### Flight Attributes
 
-| Key                                 | Data Type  | Notes                       |
-|:------------------------------------|:-----------|:----------------------------|
-| flight_actualArrivalTime            | Date       |                             |
-| flight_actualDepartureTime          | Date       |                             |
-| flight_actualInstrument             | Integer 32 |                             |
-| flight_aeroTows                     | Integer 32 |                             |
-| flight_arrests                      | Integer 32 |                             |
-| flight_autolands                    | Integer 32 |                             |
-| flight_bolters                      | Integer 32 |                             |
-| flight_catapults                    | Integer 32 |                             |
-| flight_catII                        | Integer 32 |                             |
-| flight_catIII                       | Integer 32 |                             |
-| flight_cloudbase                    | Integer 32 |                             |
-| flight_commandPractice              | Integer 32 |                             |
-| flight_crossCountry                 | Integer 32 |                             |
-| flight_crossCountryNight            | Integer 32 |                             |
-| flight_customCapacity1              | Boolean    |                             |
-| flight_customCapacity2              | Boolean    |                             |
-| flight_customCapacity3              | Boolean    |                             |
-| flight_customCapacity4              | Boolean    |                             |
-| flight_customCapacity5              | Boolean    |                             |
-| flight_customCapacity6              | Boolean    |                             |
-| flight_customCapacity7              | Boolean    |                             |
-| flight_customCapacity8              | Boolean    |                             |
-| flight_customCapacity9              | Boolean    |                             |
-| flight_customCapacity10             | Boolean    |                             |
-| flight_customCapacity11             | Boolean    |                             |
-| flight_customCapacity12             | Boolean    |                             |
-| flight_customCapacity13             | Boolean    |                             |
-| flight_customCapacity14             | Boolean    |                             |
-| flight_customCapacity15             | Boolean    |                             |
-| flight_customCapacity16             | Boolean    |                             |
-| flight_customCapacity17             | Boolean    |                             |
-| flight_customCapacity18             | Boolean    |                             |
-| flight_customCapacity19             | Boolean    |                             |
-| flight_customCapacity20             | Boolean    |                             |
-| flight_customLanding1               | Integer 32 |                             |
-| flight_customLanding2               | Integer 32 |                             |
-| flight_customLanding3               | Integer 32 |                             |
-| flight_customLanding4               | Integer 32 |                             |
-| flight_customLanding5               | Integer 32 |                             |
-| flight_customLanding6               | Integer 32 |                             |
-| flight_customLanding7               | Integer 32 |                             |
-| flight_customLanding8               | Integer 32 |                             |
-| flight_customLanding9               | Integer 32 |                             |
-| flight_customLanding10              | Integer 32 |                             |
-| flight_customNote1                  | String     |                             |
-| flight_customNote2                  | String     |                             |
-| flight_customNote3                  | String     |                             |
-| flight_customNote4                  | String     |                             |
-| flight_customNote5                  | String     |                             |
-| flight_customNote6                  | String     |                             |
-| flight_customNote7                  | String     |                             |
-| flight_customNote8                  | String     |                             |
-| flight_customNote9                  | String     |                             |
-| flight_customNote10                 | String     |                             |
-| flight_customOp1                    | Integer 32 |                             |
-| flight_customOp2                    | Integer 32 |                             |
-| flight_customOp3                    | Integer 32 |                             |
-| flight_customOp4                    | Integer 32 |                             |
-| flight_customOp5                    | Integer 32 |                             |
-| flight_customOp6                    | Integer 32 |                             |
-| flight_customOp7                    | Integer 32 |                             |
-| flight_customOp8                    | Integer 32 |                             |
-| flight_customOp9                    | Integer 32 |                             |
-| flight_customOp10                   | Integer 32 |                             |
-| flight_customOp11                   | Integer 32 |                             |
-| flight_customOp12                   | Integer 32 |                             |
-| flight_customOp13                   | Integer 32 |                             |
-| flight_customOp14                   | Integer 32 |                             |
-| flight_customOp15                   | Integer 32 |                             |
-| flight_customOp16                   | Integer 32 |                             |
-| flight_customOp17                   | Integer 32 |                             |
-| flight_customOp18                   | Integer 32 |                             |
-| flight_customOp19                   | Integer 32 |                             |
-| flight_customOp20                   | Integer 32 |                             |
-| flight_customTakeoff1               | Integer 32 |                             |
-| flight_customTakeoff2               | Integer 32 |                             |
-| flight_customTakeoff3               | Integer 32 |                             |
-| flight_customTakeoff4               | Integer 32 |                             |
-| flight_customTakeoff5               | Integer 32 |                             |
-| flight_customTakeoff6               | Integer 32 |                             |
-| flight_customTakeoff7               | Integer 32 |                             |
-| flight_customTakeoff8               | Integer 32 |                             |
-| flight_customTakeoff9               | Integer 32 |                             |
-| flight_customTakeoff10              | Integer 32 |                             |
-| flight_customTime1                  | Integer 32 |                             |
-| flight_customTime2                  | Integer 32 |                             |
-| flight_customTime3                  | Integer 32 |                             |
-| flight_customTime4                  | Integer 32 |                             |
-| flight_customTime5                  | Integer 32 |                             |
-| flight_customTime6                  | Integer 32 |                             |
-| flight_customTime7                  | Integer 32 |                             |
-| flight_customTime8                  | Integer 32 |                             |
-| flight_customTime9                  | Integer 32 |                             |
-| flight_customTime10                 | Integer 32 |                             |
-| flight_customTime11                 | Integer 32 |                             |
-| flight_customTime12                 | Integer 32 |                             |
-| flight_customTime13                 | Integer 32 |                             |
-| flight_customTime14                 | Integer 32 |                             |
-| flight_customTime15                 | Integer 32 |                             |
-| flight_customTime16                 | Integer 32 |                             |
-| flight_customTime17                 | Integer 32 |                             |
-| flight_customTime18                 | Integer 32 |                             |
-| flight_customTime19                 | Integer 32 |                             |
-| flight_customTime20                 | Integer 32 |                             |
-| flight_dayLandings                  | Integer 32 |                             |
-| flight_dayTakeoffs                  | Integer 32 |                             |
-| flight_distance                     | Float      |       Normally auto calculated by LT                      |
-| flight_dualGiven                    | Integer 32 |                             |
-| flight_dualReceived                 | Integer 32 |                             |
-| flight_dualReceivedNight            | Integer 32 |                             |
-| flight_duration                     | Integer 32 |  "Air Time" normally calcuated automatically from Off to On                      |
-| flight_dutyTimePayRate              | Float      |                             |
-| flight_expenses                     | Float      |                             |
-| flight_faaPart61                    | Boolean    |                             |
-| flight_faaPart91                    | Boolean    |                             |
-| flight_faaPart121                   | Boolean    |                             |
-| flight_faaPart135                   | Boolean    |                             |
-| flight_far1                         | Boolean    |                             |
-| flight_fcls                         | Integer 32 |  A Field Carrier Landing                           |
-| flight_flagged                      | Boolean    |  A Flagged flight in LT will show red on the Mac                             |
-| flight_flightDate                   | Date       |                             |
-| flight_flightDutyEndTime            | Date       |                             |
-| flight_flightDutyStartTime          | Date       |                             |
-| flight_flightDutyTotal              | Integer 32 |                             |
-| flight_flightEngineer               | Integer 32 |                             |
-| flight_flightEngineerCapacity       | Boolean    |                             |
-| flight_flightNumber                 | String     |                             |
-| flight_flightTimePayRate            | Float      |                             |
-| flight_from                         | String     |                             |
-| flight_fuelAdded                    | Double     |                             |
-| flight_fuelBurned                   | Double     |                             |
-| flight_fuelMinimumForDiversion      | Double     |                             |
-| flight_fuelRemaining                | Double     |                             |
-| flight_fuelTotalAboard              | Double     |                             |
-| flight_fuelTotalBeforeUplift        | Double     |                             |
-| flight_fuelUplift                   | Double     |                             |
-| flight_fullStops                    | Integer 32 |                             |
-| flight_goArounds                    | Integer 32 |                             |
-| flight_ground                       | Integer 32 |                             |
-| flight_groundLaunches               | Integer 32 |                             |
-| flight_hobbsStart                   | Float      |                             |
-| flight_hobbsStop                    | Float      |                             |
-| flight_holds                        | Integer 32 |                             |
-| flight_ifr                          | Integer 32 | Usually denotes time flown under an IFR flight plan.                            |
-| flight_ifrCapacity                  | Boolean    |                             |
-| flight_instrumentProficiencyCheck   | Boolean    |                             |
-| flight_key                          | String     |                             |
-| flight_landingCapacity              | Boolean    |                             |
-| flight_landingTime                  | Date       |                             |
-| flight_leg                          | Integer 32 | Used to order flights on the same date.                            |
-| flight_legCount                     | Integer 32 |  Used if a single flight entity contains multiple legs.                           |
-| flight_multiPilot                   | Integer 32 |                             |
-| flight_night                        | Integer 32 |                             |
-| flight_nightLandings                | Integer 32 |                             |
-| flight_nightTakeoffs                | Integer 32 |                             |
-| flight_nightVisionGoggle            | Integer 32 |                             |
-| flight_nightVisionGoggleLandings    | Integer 32 |                             |
-| flight_nightVisionGoggleTakeoffs    | Integer 32 |                             |
-| flight_offDutyTime                  | Date       |                             |
-| flight_onDutyTime                   | Date       |                             |
-| flight_p1us                         | Integer 32 |                             |
-| flight_p1usNight                    | Integer 32 |                             |
-| flight_paxCount                     | Integer 16 |                             |
-| flight_paxCountBusiness             | Integer 16 |                             |
-| flight_payload                      | Double     |                             |
-| flight_pic                          | Integer 32 |                             |
-| flight_picCapacity                  | Boolean    |                             |
-| flight_picNight                     | Integer 32 |                             |
-| flight_pilotCount                   | Integer 16 |                             |
-| flight_pilotFlyingCapacity          | Boolean    |                             |
-| flight_poweredLaunches              | Integer 32 |                             |
-| flight_relief                       | Integer 32 |                             |
-| flight_reliefCrewCapacity           | Boolean    |                             |
-| flight_reliefNight                  | Integer 32 |                             |
-| flight_remarks                      | String     |                             |
-| flight_rest                         | Integer 32 |                             |
-| flight_review                       | Boolean    |                             |
-| flight_route                        | String     |                             |
-| flight_scheduledArrivalTime         | Date       |                             |
-| flight_scheduledDepartureTime       | Date       |                             |
-| flight_scheduledTimePayRate         | Float      |                             |
-| flight_scheduledTotalTime           | Integer 32 |                             |
-| flight_sectionName                  | String     |                             |
-| flight_selectedAircraftClass        | String     | Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type.                             |
-| flight_selectedAircraftID           | String     | The aircraft ID will create an entry on the "Aircraft" page unless this aircraft ID already exists.                             |
-| flight_selectedAircraftType         | String     |  The type of the aircraft. The preferred string is the exact ICAO code of this aircraft type. An entry on the "Types" page of LT will be created unless this type already exists.                           |
-| flight_selectedApproach1            | String     |                             |
-| flight_selectedApproach2            | String     |                             |
-| flight_selectedApproach3            | String     |                             |
-| flight_selectedApproach4            | String     |                             |
-| flight_selectedApproach5            | String     |                             |
-| flight_selectedApproach6            | String     |                             |
-| flight_selectedApproach7            | String     |                             |
-| flight_selectedApproach8            | String     |                             |
-| flight_selectedApproach9            | String     |                             |
-| flight_selectedApproach10           | String     |                             |
-| flight_selectedCategory             | String     |                             |
-| flight_selectedCrewCommander        | String     |                             |
-| flight_selectedCrewCustom1          | String     |                             |
-| flight_selectedCrewCustom2          | String     |                             |
-| flight_selectedCrewCustom3          | String     |                             |
-| flight_selectedCrewCustom4          | String     |                             |
-| flight_selectedCrewCustom5          | String     |                             |
-| flight_selectedCrewCustom6          | String     |                             |
-| flight_selectedCrewCustom7          | String     |                             |
-| flight_selectedCrewCustom8          | String     |                             |
-| flight_selectedCrewCustom9          | String     |                             |
-| flight_selectedCrewCustom10         | String     |                             |
-| flight_selectedCrewFlightAttendant  | String     |                             |
-| flight_selectedCrewFlightAttendant2 | String     |                             |
-| flight_selectedCrewFlightAttendant3 | String     |                             |
-| flight_selectedCrewFlightAttendant4 | String     |                             |
-| flight_selectedCrewFlightEngineer   | String     |                             |
-| flight_selectedCrewInstructor       | String     |                             |
-| flight_selectedCrewObserver         | String     |                             |
-| flight_selectedCrewObserver2        | String     |                             |
-| flight_selectedCrewPIC              | String     |                             |
-| flight_selectedCrewPurser           | String     |                             |
-| flight_selectedCrewRelief           | String     |                             |
-| flight_selectedCrewRelief2          | String     |                             |
-| flight_selectedCrewRelief3          | String     |                             |
-| flight_selectedCrewRelief4          | String     |                             |
-| flight_selectedCrewSIC              | String     |                             |
-| flight_selectedCrewStudent          | String     |                             |
-| flight_selectedEngineType           | String     |   Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type code.                          |
-| flight_selectedMake                 | String     | Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type code.                            |
-| flight_selectedModel                | String     |  Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type code.                           |
-| flight_sfi                          | Integer 32 | Simulator Flight Instructor |
-| flight_shipboardLandings            | Integer 32 |                             |
-| flight_shipboardTakeoffs            | Integer 32 |                             |
-| flight_sic                          | Integer 32 |                             |
-| flight_sicCapacity                  | Boolean    |                             |
-| flight_sicNight                     | Integer 32 |                             |
-| flight_simulatedInstrument          | Integer 32 |                             |
-| flight_simulator                    | Integer 32 |                             |
-| flight_sky                          | String     |                             |
-| flight_solo                         | Integer 32 |                             |
-| flight_tachStart                    | Float      |                             |
-| flight_tachStop                     | Float      |                             |
-| flight_takeoffTime                  | Date       |                             |
-| flight_taxiInTime                   | Date       |                             |
-| flight_taxiOutTime                  | Date       |                             |
-| flight_to                           | String     |                             |
-| flight_totalDutyTime                | Integer 32 |                             |
-| flight_totalEarned                  | Float      |                             |
-| flight_totalLandings                | Integer 32 |  Normally not sent as this is not a user accessible field. The preferred fields are `flight_nightLandings` and `flight_dayLandings` which will autopopulate this field.                            |
-| flight_totalPushTime                | Integer 32 |                             |
-| flight_totalTakeoffs                | Integer 32 |                             |
-| flight_totalTime                    | Integer 32 |                             |
-| flight_touchAndGoes                 | Integer 32 |                             |
-| flight_type                         | Integer 32 |   *See below.                          |
-| flight_underSupervisionCapacity     | Boolean    |                             |
-| flight_useCode                      | String     |                             |
-| flight_visibility                   | Float      |                             |
-| flight_waterLandings                | Integer 32 |                             |
-| flight_waterTakeoffs                | Integer 32 |                             |
-| flight_weather                      | String     |                             |
-| flight_windDirection                | Integer 16 |                             |
-| flight_windVelocity                 | Integer 16 |                             |
+| Key                                 | Data Type  | Notes                                                                                                                                                                            |
+|:------------------------------------|:-----------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| flight_actualArrivalTime            | Date       |                                                                                                                                                                                  |
+| flight_actualDepartureTime          | Date       |                                                                                                                                                                                  |
+| flight_actualInstrument             | Integer 32 |                                                                                                                                                                                  |
+| flight_aeroTows                     | Integer 32 |                                                                                                                                                                                  |
+| flight_arrests                      | Integer 32 |                                                                                                                                                                                  |
+| flight_autolands                    | Integer 32 |                                                                                                                                                                                  |
+| flight_bolters                      | Integer 32 |                                                                                                                                                                                  |
+| flight_catapults                    | Integer 32 |                                                                                                                                                                                  |
+| flight_catII                        | Integer 32 |                                                                                                                                                                                  |
+| flight_catIII                       | Integer 32 |                                                                                                                                                                                  |
+| flight_cloudbase                    | Integer 32 |                                                                                                                                                                                  |
+| flight_commandPractice              | Integer 32 |                                                                                                                                                                                  |
+| flight_crossCountry                 | Integer 32 |                                                                                                                                                                                  |
+| flight_crossCountryNight            | Integer 32 |                                                                                                                                                                                  |
+| flight_customCapacity1              | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity2              | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity3              | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity4              | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity5              | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity6              | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity7              | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity8              | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity9              | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity10             | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity11             | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity12             | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity13             | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity14             | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity15             | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity16             | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity17             | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity18             | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity19             | Boolean    |                                                                                                                                                                                  |
+| flight_customCapacity20             | Boolean    |                                                                                                                                                                                  |
+| flight_customLanding1               | Integer 32 |                                                                                                                                                                                  |
+| flight_customLanding2               | Integer 32 |                                                                                                                                                                                  |
+| flight_customLanding3               | Integer 32 |                                                                                                                                                                                  |
+| flight_customLanding4               | Integer 32 |                                                                                                                                                                                  |
+| flight_customLanding5               | Integer 32 |                                                                                                                                                                                  |
+| flight_customLanding6               | Integer 32 |                                                                                                                                                                                  |
+| flight_customLanding7               | Integer 32 |                                                                                                                                                                                  |
+| flight_customLanding8               | Integer 32 |                                                                                                                                                                                  |
+| flight_customLanding9               | Integer 32 |                                                                                                                                                                                  |
+| flight_customLanding10              | Integer 32 |                                                                                                                                                                                  |
+| flight_customNote1                  | String     |                                                                                                                                                                                  |
+| flight_customNote2                  | String     |                                                                                                                                                                                  |
+| flight_customNote3                  | String     |                                                                                                                                                                                  |
+| flight_customNote4                  | String     |                                                                                                                                                                                  |
+| flight_customNote5                  | String     |                                                                                                                                                                                  |
+| flight_customNote6                  | String     |                                                                                                                                                                                  |
+| flight_customNote7                  | String     |                                                                                                                                                                                  |
+| flight_customNote8                  | String     |                                                                                                                                                                                  |
+| flight_customNote9                  | String     |                                                                                                                                                                                  |
+| flight_customNote10                 | String     |                                                                                                                                                                                  |
+| flight_customOp1                    | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp2                    | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp3                    | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp4                    | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp5                    | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp6                    | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp7                    | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp8                    | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp9                    | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp10                   | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp11                   | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp12                   | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp13                   | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp14                   | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp15                   | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp16                   | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp17                   | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp18                   | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp19                   | Integer 32 |                                                                                                                                                                                  |
+| flight_customOp20                   | Integer 32 |                                                                                                                                                                                  |
+| flight_customTakeoff1               | Integer 32 |                                                                                                                                                                                  |
+| flight_customTakeoff2               | Integer 32 |                                                                                                                                                                                  |
+| flight_customTakeoff3               | Integer 32 |                                                                                                                                                                                  |
+| flight_customTakeoff4               | Integer 32 |                                                                                                                                                                                  |
+| flight_customTakeoff5               | Integer 32 |                                                                                                                                                                                  |
+| flight_customTakeoff6               | Integer 32 |                                                                                                                                                                                  |
+| flight_customTakeoff7               | Integer 32 |                                                                                                                                                                                  |
+| flight_customTakeoff8               | Integer 32 |                                                                                                                                                                                  |
+| flight_customTakeoff9               | Integer 32 |                                                                                                                                                                                  |
+| flight_customTakeoff10              | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime1                  | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime2                  | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime3                  | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime4                  | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime5                  | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime6                  | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime7                  | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime8                  | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime9                  | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime10                 | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime11                 | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime12                 | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime13                 | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime14                 | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime15                 | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime16                 | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime17                 | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime18                 | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime19                 | Integer 32 |                                                                                                                                                                                  |
+| flight_customTime20                 | Integer 32 |                                                                                                                                                                                  |
+| flight_dayLandings                  | Integer 32 |                                                                                                                                                                                  |
+| flight_dayTakeoffs                  | Integer 32 |                                                                                                                                                                                  |
+| flight_distance                     | Float      | Normally auto calculated by LT                                                                                                                                                   |
+| flight_dualGiven                    | Integer 32 |                                                                                                                                                                                  |
+| flight_dualReceived                 | Integer 32 |                                                                                                                                                                                  |
+| flight_dualReceivedNight            | Integer 32 |                                                                                                                                                                                  |
+| flight_duration                     | Integer 32 | "Air Time" normally calcuated automatically from Off to On                                                                                                                       |
+| flight_dutyTimePayRate              | Float      |                                                                                                                                                                                  |
+| flight_expenses                     | Float      |                                                                                                                                                                                  |
+| flight_faaPart61                    | Boolean    |                                                                                                                                                                                  |
+| flight_faaPart91                    | Boolean    |                                                                                                                                                                                  |
+| flight_faaPart121                   | Boolean    |                                                                                                                                                                                  |
+| flight_faaPart135                   | Boolean    |                                                                                                                                                                                  |
+| flight_far1                         | Boolean    |                                                                                                                                                                                  |
+| flight_fcls                         | Integer 32 | A Field Carrier Landing                                                                                                                                                          |
+| flight_flagged                      | Boolean    | A Flagged flight in LT will show red on the Mac                                                                                                                                  |
+| flight_flightDate                   | Date       |                                                                                                                                                                                  |
+| flight_flightDutyEndTime            | Date       |                                                                                                                                                                                  |
+| flight_flightDutyStartTime          | Date       |                                                                                                                                                                                  |
+| flight_flightDutyTotal              | Integer 32 |                                                                                                                                                                                  |
+| flight_flightEngineer               | Integer 32 |                                                                                                                                                                                  |
+| flight_flightEngineerCapacity       | Boolean    |                                                                                                                                                                                  |
+| flight_flightNumber                 | String     |                                                                                                                                                                                  |
+| flight_flightTimePayRate            | Float      |                                                                                                                                                                                  |
+| flight_from                         | String     |                                                                                                                                                                                  |
+| flight_fuelAdded                    | Double     |                                                                                                                                                                                  |
+| flight_fuelBurned                   | Double     |                                                                                                                                                                                  |
+| flight_fuelMinimumForDiversion      | Double     |                                                                                                                                                                                  |
+| flight_fuelRemaining                | Double     |                                                                                                                                                                                  |
+| flight_fuelTotalAboard              | Double     |                                                                                                                                                                                  |
+| flight_fuelTotalBeforeUplift        | Double     |                                                                                                                                                                                  |
+| flight_fuelUplift                   | Double     |                                                                                                                                                                                  |
+| flight_fullStops                    | Integer 32 |                                                                                                                                                                                  |
+| flight_goArounds                    | Integer 32 |                                                                                                                                                                                  |
+| flight_ground                       | Integer 32 |                                                                                                                                                                                  |
+| flight_groundLaunches               | Integer 32 |                                                                                                                                                                                  |
+| flight_hobbsStart                   | Float      |                                                                                                                                                                                  |
+| flight_hobbsStop                    | Float      |                                                                                                                                                                                  |
+| flight_holds                        | Integer 32 |                                                                                                                                                                                  |
+| flight_ifr                          | Integer 32 | Usually denotes time flown under an IFR flight plan.                                                                                                                             |
+| flight_ifrCapacity                  | Boolean    |                                                                                                                                                                                  |
+| flight_instrumentProficiencyCheck   | Boolean    |                                                                                                                                                                                  |
+| flight_key                          | String     |                                                                                                                                                                                  |
+| flight_landingCapacity              | Boolean    |                                                                                                                                                                                  |
+| flight_landingTime                  | Date       |                                                                                                                                                                                  |
+| flight_leg                          | Integer 32 | Used to order flights on the same date.                                                                                                                                          |
+| flight_legCount                     | Integer 32 | Used if a single flight entity contains multiple legs.                                                                                                                           |
+| flight_multiPilot                   | Integer 32 |                                                                                                                                                                                  |
+| flight_night                        | Integer 32 |                                                                                                                                                                                  |
+| flight_nightLandings                | Integer 32 |                                                                                                                                                                                  |
+| flight_nightTakeoffs                | Integer 32 |                                                                                                                                                                                  |
+| flight_nightVisionGoggle            | Integer 32 |                                                                                                                                                                                  |
+| flight_nightVisionGoggleLandings    | Integer 32 |                                                                                                                                                                                  |
+| flight_nightVisionGoggleTakeoffs    | Integer 32 |                                                                                                                                                                                  |
+| flight_offDutyTime                  | Date       |                                                                                                                                                                                  |
+| flight_onDutyTime                   | Date       |                                                                                                                                                                                  |
+| flight_p1us                         | Integer 32 |                                                                                                                                                                                  |
+| flight_p1usNight                    | Integer 32 |                                                                                                                                                                                  |
+| flight_paxCount                     | Integer 16 |                                                                                                                                                                                  |
+| flight_paxCountBusiness             | Integer 16 |                                                                                                                                                                                  |
+| flight_payload                      | Double     |                                                                                                                                                                                  |
+| flight_pic                          | Integer 32 |                                                                                                                                                                                  |
+| flight_picCapacity                  | Boolean    |                                                                                                                                                                                  |
+| flight_picNight                     | Integer 32 |                                                                                                                                                                                  |
+| flight_pilotCount                   | Integer 16 |                                                                                                                                                                                  |
+| flight_pilotFlyingCapacity          | Boolean    |                                                                                                                                                                                  |
+| flight_poweredLaunches              | Integer 32 |                                                                                                                                                                                  |
+| flight_relief                       | Integer 32 |                                                                                                                                                                                  |
+| flight_reliefCrewCapacity           | Boolean    |                                                                                                                                                                                  |
+| flight_reliefNight                  | Integer 32 |                                                                                                                                                                                  |
+| flight_remarks                      | String     |                                                                                                                                                                                  |
+| flight_rest                         | Integer 32 |                                                                                                                                                                                  |
+| flight_review                       | Boolean    |                                                                                                                                                                                  |
+| flight_route                        | String     |                                                                                                                                                                                  |
+| flight_scheduledArrivalTime         | Date       |                                                                                                                                                                                  |
+| flight_scheduledDepartureTime       | Date       |                                                                                                                                                                                  |
+| flight_scheduledTimePayRate         | Float      |                                                                                                                                                                                  |
+| flight_scheduledTotalTime           | Integer 32 |                                                                                                                                                                                  |
+| flight_sectionName                  | String     |                                                                                                                                                                                  |
+| flight_selectedAircraftClass        | String     | Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type.                                                                                                  |
+| flight_selectedAircraftID           | String     | The aircraft ID will create an entry on the "Aircraft" page unless this aircraft ID already exists.                                                                              |
+| flight_selectedAircraftType         | String     | The type of the aircraft. The preferred string is the exact ICAO code of this aircraft type. An entry on the "Types" page of LT will be created unless this type already exists. |
+| flight_selectedApproach1            | String     |                                                                                                                                                                                  |
+| flight_selectedApproach2            | String     |                                                                                                                                                                                  |
+| flight_selectedApproach3            | String     |                                                                                                                                                                                  |
+| flight_selectedApproach4            | String     |                                                                                                                                                                                  |
+| flight_selectedApproach5            | String     |                                                                                                                                                                                  |
+| flight_selectedApproach6            | String     |                                                                                                                                                                                  |
+| flight_selectedApproach7            | String     |                                                                                                                                                                                  |
+| flight_selectedApproach8            | String     |                                                                                                                                                                                  |
+| flight_selectedApproach9            | String     |                                                                                                                                                                                  |
+| flight_selectedApproach10           | String     |                                                                                                                                                                                  |
+| flight_selectedCategory             | String     |                                                                                                                                                                                  |
+| flight_selectedCrewCommander        | String     |                                                                                                                                                                                  |
+| flight_selectedCrewCustom1          | String     |                                                                                                                                                                                  |
+| flight_selectedCrewCustom2          | String     |                                                                                                                                                                                  |
+| flight_selectedCrewCustom3          | String     |                                                                                                                                                                                  |
+| flight_selectedCrewCustom4          | String     |                                                                                                                                                                                  |
+| flight_selectedCrewCustom5          | String     |                                                                                                                                                                                  |
+| flight_selectedCrewCustom6          | String     |                                                                                                                                                                                  |
+| flight_selectedCrewCustom7          | String     |                                                                                                                                                                                  |
+| flight_selectedCrewCustom8          | String     |                                                                                                                                                                                  |
+| flight_selectedCrewCustom9          | String     |                                                                                                                                                                                  |
+| flight_selectedCrewCustom10         | String     |                                                                                                                                                                                  |
+| flight_selectedCrewFlightAttendant  | String     |                                                                                                                                                                                  |
+| flight_selectedCrewFlightAttendant2 | String     |                                                                                                                                                                                  |
+| flight_selectedCrewFlightAttendant3 | String     |                                                                                                                                                                                  |
+| flight_selectedCrewFlightAttendant4 | String     |                                                                                                                                                                                  |
+| flight_selectedCrewFlightEngineer   | String     |                                                                                                                                                                                  |
+| flight_selectedCrewInstructor       | String     |                                                                                                                                                                                  |
+| flight_selectedCrewObserver         | String     |                                                                                                                                                                                  |
+| flight_selectedCrewObserver2        | String     |                                                                                                                                                                                  |
+| flight_selectedCrewPIC              | String     |                                                                                                                                                                                  |
+| flight_selectedCrewPurser           | String     |                                                                                                                                                                                  |
+| flight_selectedCrewRelief           | String     |                                                                                                                                                                                  |
+| flight_selectedCrewRelief2          | String     |                                                                                                                                                                                  |
+| flight_selectedCrewRelief3          | String     |                                                                                                                                                                                  |
+| flight_selectedCrewRelief4          | String     |                                                                                                                                                                                  |
+| flight_selectedCrewSIC              | String     |                                                                                                                                                                                  |
+| flight_selectedCrewStudent          | String     |                                                                                                                                                                                  |
+| flight_selectedEngineType           | String     | Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type code.                                                                                             |
+| flight_selectedMake                 | String     | Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type code.                                                                                             |
+| flight_selectedModel                | String     | Will autopopulate if the `flight_selectedAircraftType` is sent as an ICAO type code.                                                                                             |
+| flight_sfi                          | Integer 32 | Simulator Flight Instructor                                                                                                                                                      |
+| flight_shipboardLandings            | Integer 32 |                                                                                                                                                                                  |
+| flight_shipboardTakeoffs            | Integer 32 |                                                                                                                                                                                  |
+| flight_sic                          | Integer 32 |                                                                                                                                                                                  |
+| flight_sicCapacity                  | Boolean    |                                                                                                                                                                                  |
+| flight_sicNight                     | Integer 32 |                                                                                                                                                                                  |
+| flight_simulatedInstrument          | Integer 32 |                                                                                                                                                                                  |
+| flight_simulator                    | Integer 32 |                                                                                                                                                                                  |
+| flight_sky                          | String     |                                                                                                                                                                                  |
+| flight_solo                         | Integer 32 |                                                                                                                                                                                  |
+| flight_tachStart                    | Float      |                                                                                                                                                                                  |
+| flight_tachStop                     | Float      |                                                                                                                                                                                  |
+| flight_takeoffTime                  | Date       |                                                                                                                                                                                  |
+| flight_taxiInTime                   | Date       |                                                                                                                                                                                  |
+| flight_taxiOutTime                  | Date       |                                                                                                                                                                                  |
+| flight_to                           | String     |                                                                                                                                                                                  |
+| flight_totalDutyTime                | Integer 32 |                                                                                                                                                                                  |
+| flight_totalEarned                  | Float      |                                                                                                                                                                                  |
+| flight_totalLandings                | Integer 32 | Normally not sent as this is not a user accessible field. The preferred fields are `flight_nightLandings` and `flight_dayLandings` which will autopopulate this field.           |
+| flight_totalPushTime                | Integer 32 |                                                                                                                                                                                  |
+| flight_totalTakeoffs                | Integer 32 |                                                                                                                                                                                  |
+| flight_totalTime                    | Integer 32 |                                                                                                                                                                                  |
+| flight_touchAndGoes                 | Integer 32 |                                                                                                                                                                                  |
+| flight_type                         | Integer 32 | *See below.                                                                                                                                                                      |
+| flight_underSupervisionCapacity     | Boolean    |                                                                                                                                                                                  |
+| flight_useCode                      | String     |                                                                                                                                                                                  |
+| flight_visibility                   | Float      |                                                                                                                                                                                  |
+| flight_waterLandings                | Integer 32 |                                                                                                                                                                                  |
+| flight_waterTakeoffs                | Integer 32 |                                                                                                                                                                                  |
+| flight_weather                      | String     |                                                                                                                                                                                  |
+| flight_windDirection                | Integer 16 |                                                                                                                                                                                  |
+| flight_windVelocity                 | Integer 16 |                                                                                                                                                                                  |
+
 
 
 ***flight_type** is used to determine the type of the flight entity:
@@ -499,62 +500,63 @@ If specific aircraft attributes must be set then a seperate payload can be sent 
 
 Available attributes include:
 
-| Key                                 | Data Type  | Notes                       |
-|:------------------------------------|:-----------|:----------------------------|
-| aircraft_aerobatic           | Boolean       |                             |
-| aircraft_aircraftID           | String       |                             |
-| aircraft_autoEngine           | String       |                             |
-| aircraft_complex           | String       |                             |
-| aircraft_customAttribute1           | Boolean       |                             |
-| aircraft_customAttribute2           | Boolean       |                             |
-| aircraft_customAttribute3           | Boolean       |                             |
-| aircraft_customAttribute4           | Boolean       |                             |
-| aircraft_customAttribute5           | Boolean       |                             |
-| aircraft_customText1           | String       |                             |
-| aircraft_customText2           | String       |                             |
-| aircraft_customText3           | String       |                             |
-| aircraft_customText4           | String       |                             |
-| aircraft_customText5           | String       |                             |
-| aircraft_customText6           | String       |                             |
-| aircraft_customText7           | String       |                             |
-| aircraft_customText8           | String       |                             |
-| aircraft_efis           | Boolean       |                             |
-| aircraft_enginePower           | Integer       |                             |
-| aircraft_experimental           | Boolean       |                             |
-| aircraft_fuelInjection           | Boolean       |                             |
-| aircraft_highPerformance           | Boolean       |                             |
-| aircraft_hobbs           | Float       |                             |
-| aircraft_instrumentType           | String       |                             |
-| aircraft_military           | Boolean       |                             |
-| aircraft_notes           | String       |                             |
-| aircraft_paxCapacity           | Integer       |                             |
-| aircraft_pressurized           | Boolean       |                             |
-| aircraft_radialEngine           | Boolean       |                             |
-| aircraft_secondaryID           | String       |                             |
-| aircraft_serialNumber           | String       |                             |
-| aircraft_simAuthNumber           | String       |                             |
-| aircraft_simLevel           | String       |                             |
-| aircraft_tachometer           | Float       |                             |
-| aircraft_tailwheel           | Boolean       |                             |
-| aircraft_technicallyAdvanced           | Boolean       |                             |
-| aircraft_turboCharged           | Boolean       |                             |
-| aircraft_undercarriageAmphib           | Boolean       |                             |
-| aircraft_undercarriageFloats           | Boolean       |                             |
-| aircraft_undercarriageRetractable           | Boolean       |                             |
-| aircraft_undercarriageSkids           | Boolean       |                             |
-| aircraft_undercarriageSkis           | Boolean       |                             |
-| aircraft_warbird           | Boolean       |                             |
-| aircraft_weight           | Float       |                             |
-| aircraft_wheelConfiguration           | String       |                             |
-| aircraft_year           | Date       |                             |
+| Key                               | Data Type | Notes |
+|:----------------------------------|:----------|:------|
+| aircraft_aerobatic                | Boolean   |       |
+| aircraft_aircraftID               | String    |       |
+| aircraft_autoEngine               | String    |       |
+| aircraft_complex                  | String    |       |
+| aircraft_customAttribute1         | Boolean   |       |
+| aircraft_customAttribute2         | Boolean   |       |
+| aircraft_customAttribute3         | Boolean   |       |
+| aircraft_customAttribute4         | Boolean   |       |
+| aircraft_customAttribute5         | Boolean   |       |
+| aircraft_customText1              | String    |       |
+| aircraft_customText2              | String    |       |
+| aircraft_customText3              | String    |       |
+| aircraft_customText4              | String    |       |
+| aircraft_customText5              | String    |       |
+| aircraft_customText6              | String    |       |
+| aircraft_customText7              | String    |       |
+| aircraft_customText8              | String    |       |
+| aircraft_efis                     | Boolean   |       |
+| aircraft_enginePower              | Integer   |       |
+| aircraft_experimental             | Boolean   |       |
+| aircraft_fuelInjection            | Boolean   |       |
+| aircraft_highPerformance          | Boolean   |       |
+| aircraft_hobbs                    | Float     |       |
+| aircraft_instrumentType           | String    |       |
+| aircraft_military                 | Boolean   |       |
+| aircraft_notes                    | String    |       |
+| aircraft_paxCapacity              | Integer   |       |
+| aircraft_pressurized              | Boolean   |       |
+| aircraft_radialEngine             | Boolean   |       |
+| aircraft_secondaryID              | String    |       |
+| aircraft_serialNumber             | String    |       |
+| aircraft_simAuthNumber            | String    |       |
+| aircraft_simLevel                 | String    |       |
+| aircraft_tachometer               | Float     |       |
+| aircraft_tailwheel                | Boolean   |       |
+| aircraft_technicallyAdvanced      | Boolean   |       |
+| aircraft_turboCharged             | Boolean   |       |
+| aircraft_undercarriageAmphib      | Boolean   |       |
+| aircraft_undercarriageFloats      | Boolean   |       |
+| aircraft_undercarriageRetractable | Boolean   |       |
+| aircraft_undercarriageSkids       | Boolean   |       |
+| aircraft_undercarriageSkis        | Boolean   |       |
+| aircraft_warbird                  | Boolean   |       |
+| aircraft_weight                   | Float     |       |
+| aircraft_wheelConfiguration       | String    |       |
+| aircraft_year                     | Date      |       |
+
 
 ### Document Revision History
 
-| Date       | Notes                                                                     |
-|:-----------|:--------------------------------------------------------------------------|
-| 2020-04-17 | Added details about proper JSON formatting and parameter encoding. Added reference links. |
-| 2020-04-23 | Converted to Markdown                                                     |
-| 2022-09-01 | Added flight field details, including flight type integers and other miscellaneous  notes. Added Aircraft entity type.                                              |
+| Date       | Notes                                                                                                                  |
+|:-----------|:-----------------------------------------------------------------------------------------------------------------------|
+| 2020-04-17 | Added details about proper JSON formatting and parameter encoding. Added reference links.                              |
+| 2020-04-23 | Converted to Markdown                                                                                                  |
+| 2022-09-01 | Added flight field details, including flight type integers and other miscellaneous  notes. Added Aircraft entity type. |
 
 ---
 ![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png "Creative Commons License")  
